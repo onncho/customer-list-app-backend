@@ -1,6 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersService } from './users/users.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CustomerModule } from './customer/customer.module';
 import { APP_INTERCEPTOR, APP_FILTER } from '@nestjs/core';
@@ -12,6 +13,8 @@ import { LoggingInterceptor } from './interceptors/logging';
 import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { HttpExceptionFilter } from './filters/http.exception.filter';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -21,6 +24,7 @@ import { HttpExceptionFilter } from './filters/http.exception.filter';
     ),
     CustomerModule,
     CatsModule,
+    AuthModule,
   ],
   controllers: [AppController, CatsController],
   providers: [
