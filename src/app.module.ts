@@ -12,6 +12,8 @@ import { LoggingInterceptor } from './interceptors/logging';
 import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { HttpExceptionFilter } from './filters/http.exception.filter';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +23,7 @@ import { HttpExceptionFilter } from './filters/http.exception.filter';
     ),
     CustomerModule,
     CatsModule,
+    AuthModule,
   ],
   controllers: [AppController, CatsController],
   providers: [
