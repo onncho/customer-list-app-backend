@@ -1,7 +1,7 @@
 //In most cases, AuthGuard will be sufficient.
 //However, in order to adjust either default error handling or authentication logic,
 //you can extend the class and override methods within a subclass.
-
+// implemet here passport-http-bearer
 import {
   ExecutionContext,
   Injectable,
