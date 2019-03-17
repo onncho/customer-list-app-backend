@@ -40,7 +40,11 @@ export class CustomerController {
   @Get('customer/:customerID')
   async getCustomer(@Res() res, @Param('customerID') customerID) {
     const customer = await this.customerService.getCustomer(customerID);
-    if (!customer) throw new NotFoundException('Customer does not exist!');
+
+    if (!customer) {
+      throw new NotFoundException('Customer does not exist!');
+    }
+
     return res.status(HttpStatus.OK).json(customer);
   }
 
@@ -55,7 +59,11 @@ export class CustomerController {
       customerID,
       createCustomerDTO,
     );
-    if (!customer) throw new NotFoundException('Customer does not exist!');
+
+    if (!customer) {
+      throw new NotFoundException('Customer does not exist!');
+    }
+
     return res.status(HttpStatus.OK).json({
       message: 'Customer has been successfully updated',
       customer,
@@ -66,7 +74,11 @@ export class CustomerController {
   @Delete('/delete')
   async deleteCustomer(@Res() res, @Query('customerID') customerID) {
     const customer = await this.customerService.deleteCustomer(customerID);
-    if (!customer) throw new NotFoundException('Customer does not exist');
+
+    if (!customer) {
+      throw new NotFoundException('Customer does not exist');
+    }
+
     return res.status(HttpStatus.OK).json({
       message: 'Customer has been deleted',
       customer,
