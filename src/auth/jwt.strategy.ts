@@ -5,7 +5,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

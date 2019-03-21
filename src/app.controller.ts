@@ -1,3 +1,4 @@
+import { AuthController } from './auth/auth.controller';
 import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 

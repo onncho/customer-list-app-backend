@@ -1,19 +1,21 @@
+import { AuthController } from './auth/auth.controller';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CustomerModule } from './customer/customer.module';
 import { APP_INTERCEPTOR, APP_FILTER } from '@nestjs/core';
 import { ErrorsInterceptor } from './interceptors/error';
 import { TransformInterceptor } from './Interceptors/transform';
 import { TimeoutInterceptor } from './interceptors/timeout';
-import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { LoggingInterceptor } from './interceptors/logging';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { CatsController } from './cats/cats.controller';
+import { CustomerModule } from './customer/customer.module';
 import { CatsModule } from './cats/cats.module';
+import { UsersModule } from './users/users.module';
 import { HttpExceptionFilter } from './filters/http.exception.filter';
+import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -24,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
     CustomerModule,
     CatsModule,
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController, CatsController],
   providers: [
@@ -49,6 +52,7 @@ import { AuthModule } from './auth/auth.module';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes(AppController);
+    consumer.apply(LoggerMiddleware).forRoutes(AuthController);
     // consumer
     //   .apply(LoggerMiddleware)
     //   .with('ApplicationModule')

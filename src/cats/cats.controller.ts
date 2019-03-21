@@ -22,6 +22,11 @@ import { Roles } from '../decorators/roles.decorator';
 export class CatsController {
   // constructor(private ServiceGoesHERE: ServiceFromImport) {}
 
+  @Get()
+  async test(@Res() res) {
+    return res.status(HttpStatus.OK).json('***Cats Controller***');
+  }
+
   @Get('testRoles')
   @Roles('admin')
   async testRoles(@Res() res) {
