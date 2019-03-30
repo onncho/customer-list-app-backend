@@ -29,6 +29,11 @@ export class AuthController {
     private readonly usersService: UsersService,
   ) {}
 
+  @Get()
+  public async test(@Response() res, @Request() req) {
+    return res.status(HttpStatus.OK).json('Welcome to Auth Controller');
+  }
+
   @Post('register')
   public async register(@Response() res, @Body() createUserDto: CreateUserDto) {
     const result = await this.authService.register(createUserDto);
