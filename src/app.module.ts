@@ -12,6 +12,7 @@ import { LoggingInterceptor } from './interceptors/logging';
 import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { HttpExceptionFilter } from './filters/http.exception.filter';
+import { NPN_ENABLED } from 'constants';
 
 @Module({
   imports: [
