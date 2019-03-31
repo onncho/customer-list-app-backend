@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -22,6 +23,7 @@ import { NPN_ENABLED } from 'constants';
     ),
     CustomerModule,
     CatsModule,
+    AuthModule,
   ],
   controllers: [AppController, CatsController],
   providers: [

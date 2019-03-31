@@ -30,6 +30,7 @@ export class AuthController {
   ) {}
 
   @Get()
+  // @UseGuards(AuthGuard('jwt'))
   public async test(@Response() res, @Request() req) {
     return res.status(HttpStatus.OK).json('Welcome to Auth Controller');
   }
@@ -44,7 +45,8 @@ export class AuthController {
   }
 
   @Post('login')
-  @UseGuards(AuthGuard('local'))
+  //@UseGuards(AuthGuard('local'))
+  @UseGuards(AuthGuard('jwt'))
   public async login(@Response() res, @Body() login: LoginUserDto) {
     return await this.usersService
       .findOne({ username: login.email })

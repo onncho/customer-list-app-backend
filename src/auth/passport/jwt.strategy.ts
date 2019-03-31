@@ -14,7 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: 'ILovePokemon',
     });
     // tslint:disable-next-line:ban-types
-    async (req: Request, payload: any, next: Function) => await this.verify(req, payload, next););
+    //async (req: Request, payload: any, next: Function) => await this.verify(req, payload, next););
   }
 
   // tslint:disable-next-line:ban-types
