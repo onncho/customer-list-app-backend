@@ -44,9 +44,10 @@ export class AuthController {
     return res.status(HttpStatus.OK).json(result);
   }
 
+  // local used for registration and jwt for token verification
+  //@UseGuards(AuthGuard('jwt'))
   @Post('login')
-  //@UseGuards(AuthGuard('local'))
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('local'))
   public async login(@Response() res, @Body() login: LoginUserDto) {
     return await this.usersService
       .findOne({ username: login.email })
